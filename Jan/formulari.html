@@ -1,35 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Formulari d'usuari</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulari</title>
 </head>
 <body>
-    <form action="conexions.php" method="post">
-
-        <label for="user_id">ID d'usuari:</label><br>
-        <input type="number" id="user_id" name="user_id"><br>
-
-        <label for="name">Nom:</label><br>
-        <input type="text" id="name" name="name"><br>
-
-        <label for="surname">Cognom:</label><br>
-        <input type="text" id="surname" name="surname"><br>
-
-        <label for="password">Contrasenya:</label><br>
-        <input type="password" id="password" name="password"><br>
-
-        <label for="email">Correu electronic:</label><br>
-        <input type="email" id="email" name="email"><br>
-
-        <label for="rol">Rol:</label><br>
-        <select id="rol" name="rol">
-            <option value="alumnat">Alumnat</option>
-            <option value="professorat">Professorat</option>
-        </select><br>
-
-        <label for="active">Actiu:</label><br>
-        <input type="checkbox" id="active" name="active"><br>
-        <input type="submit" value="Enviar">
-    </form>
+    //fem un Formulari en html afegint totes les dades de la base de dades
+<form method="POST" action="conexions.php">
+    <div>
+        <label>ID Usuari</label><br>
+        <input type="text" name="user_id">
+    </div>
+    <div>
+        <label>Nom</label><br>
+        <input type="text" name="name">
+    </div>
+    <div>
+        <label>Cognom</label><br>
+        <input type="text" name="surname">
+    </div>
+    <div>
+        <label>Contrasenya</label><br>
+        <input type="password" name="password">
+    </div>
+    <div>
+        <label>Email</label><br>
+        <input type="email" name="email">
+    </div>
+    <div>
+        <label>Rol</label><br>
+        <select id = rol name="rol">
+            <option value="alumnat" selected>alumnat</option>
+            <option value="professorat">professorat</option>
+          </select>
+    </div>
+    <div>
+        <label>Active</label><br>
+        <input type="checkbox" name="avtive">
+    </div>
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
