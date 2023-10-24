@@ -1,16 +1,10 @@
 <?php
-// Incluir el archivo de configuración de la base de datos
+// Incluye el archivo de configuración de la base de datos
 include 'dbConf.php';
 
 // Obtener los valores del formulario
 $email = $_POST['email'];
 $password = $_POST['password'];
-
-// Función para obtener todos los usuarios
-function getAllUsers($connection, $query) {
-    $result = mysqli_query($connection, $query);
-    return $result;
-}
 
 try {
     // Establecer una conexión a la base de datos
@@ -24,30 +18,22 @@ try {
 
         // Comprobar si se encontraron resultados
         if (mysqli_num_rows($users) != 0) {
-            foreach ($users as $user) {
-                // Comprobar el rol del usuario
-                if ($user['rol'] == "alumnat") {
-                    echo "soc un alumne<br>";
-                    echo "Nom: " . $user['name'] . "<br>";
-                    echo "Cognom: " . $user['surname'] . "<br>";
-                    echo "Email: " . $user['email'] . "<br>";
-                } else {
-                    echo "Hola " . $user['name'] . " " . ", ets professor!!<br><br>";
+            $user = mysqli_fetch_assoc($users);
 
-                    // Consultar la base de datos para obtener información de todos los usuarios
-                    $query2 = "SELECT name, surname FROM `user`";
-                    $allUsers = getAllUsers($connect, $query2);
+            // Iniciar la sesión
+            session_start();
 
-                    echo "La llista d'usuaris de la base de dades es:<br>";
-                    foreach ($allUsers as $use) {
-                        echo "Nom i cognom: " . $use['name'] . " " . $use['surname'] . "<br>";
-                    }
-                }
-            }
+            // Guardar variables de sesión
+            $_SESSION['LoggedIn'] = true;
+            $_SESSION['name'] = $user['name'];
+            $_SESSION['rol'] = $user['rol'];
+            $_SESSION['user_id'] = $user['user_id'];
+
+            // Redirigir a la página de inicio (index.php)
+            header("Location: index.php");
         } else {
             // Si no se encontraron resultados, redirigir de nuevo al formulario de inicio de sesión
-            include('login.html');
-            echo "Els valors són incorrectes";
+            header("Location: login.html?error=1");
         }
     }
 } catch (PDOException $e) {
@@ -57,4 +43,3 @@ try {
     mysqli_close($connect);
 }
 ?>
-
