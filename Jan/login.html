@@ -1,30 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Formulari d'usuari</title>
 </head>
 <body>
-    <h1>Iniciar Sesión</h1>
-
-    <form method="POST" action="process_login.php">
-        <div>
-            <label for="email">Email</label><br>
-            <input type="email" name="email" id="email" required>
-        </div>
-        <div>
-            <label for="password">Contrasenya</label><br>
-            <input type="password" name="password" id="password" required>
-        </div>
-        <div>
-            <label for="remember">Recordar Sesión</label>
-            <input type="checkbox" name="remember" id="remember">
-        </div>
-        <input type="submit" value="Iniciar Sesión">
-    </form>
-
-    <p>No tienes una cuenta? <a href="formulari.html">Regístrate aquí</a></p>
+    <form action="validar.php" method="post">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+      
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+      
+        <label for="remember">Remember me:</label>
+        <input type="checkbox" id="remember" name="remember"><br>
+      
+        <input type="submit" value="Login">x
+      
+        <p>Don't have an account? <a href="form.html">Create one</a></p>
+      </form>
+      
 </body>
 </html>
-

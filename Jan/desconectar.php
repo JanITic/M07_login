@@ -1,18 +1,10 @@
+
 <?php
 session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<?php
-// remove all session variables
-session_unset();
-// destroy the session
 session_destroy();
 
-header("Location: login.html");
-?> 
+$_SESSION["LoggedIn"] = false;
 
-</body>
-</html>
+header("Location: login.html"); 
+?>
