@@ -23,12 +23,16 @@ $rol = $_SESSION["rol"];
     <title>Pàgina Principal</title>
 </head>
 <body>
-    <h2><?php echo "Hola " . $nom . " ets un " . $rol; ?></h2>
+    <h2><?php echo "Hola " . $nom . " perteneixes a, " . $rol; ?></h2>
 </body>
 </html>
 
 
 <?php
+echo '<a href="idiomas.php">Cat</a>' . ' ';
+echo '<a href="idiomas.php">Esp</a>' . ' ';
+echo '<a href="idiomas.php">En</a>' . ' ';
+echo '<a href="delete.php">Eliminar</a></br></br>';
 function Users($connect, $query2) {
     $result = mysqli_query($connect, $query2);
     if ($result) {
@@ -63,7 +67,7 @@ if ($rol == "professorat") {
     echo '</table>';
 }
 
-echo '<a href="userdetails.php?id=' . $_SESSION["user_id"]  . '">Mostrar informació</a>';
+echo '<a href="userdetails.php?id=' . $_SESSION["user_id"]  . '">Mostrar informació</a></br>';
 echo '<a href="desconectar.php">Desconectar</a>';
 
     ?> 
