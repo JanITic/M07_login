@@ -1,8 +1,8 @@
 <?php
 session_start();
-include ("dbConf.php");
+include("dbConf.php");
 
-$connect= mysqli_connect(DB_HOST, DB_USERS, DB_PSW, DB_NAME, DB_PORT);
+$connect = mysqli_connect(DB_HOST, DB_USERS, DB_PSW, DB_NAME, DB_PORT);
 
 // Comprueba si el usuario está autenticado
 if (!isset($_SESSION['LoggedIn']) || $_SESSION['LoggedIn'] !== true) {
@@ -14,12 +14,10 @@ if (!isset($_SESSION['LoggedIn']) || $_SESSION['LoggedIn'] !== true) {
 if (isset($_GET['id'])) {
     $userId = $_GET['id'];
 
-   
-
     $query = "SELECT * FROM `user` WHERE `user_id` = $userId";
     $result = mysqli_query($connect, $query);
 
-    // comproba la consulta
+    // Comprueba la consulta
     if (mysqli_num_rows($result) == 1) {
         $user = mysqli_fetch_assoc($result);
 
@@ -32,10 +30,13 @@ if (isset($_GET['id'])) {
         echo "ID: " . $user['user_id'] . "<br>";
         echo "Actiu: " . $user['active'] . "<br>";
 
+        // Agrega un enlace para volver a "dashboard.php"
+        echo '<a href="dashboard.php">Tornar</a>';
     } else {
         echo "Usuari no trobat.";
     }
 } else {
-    echo "Falta el parámetre 'id' a la URL.";
+    echo "Falta el parámetro 'id' en la URL.";
 }
 ?>
+
